@@ -20,8 +20,8 @@ public:
 		else{
 			if(temp+hour<=endHour) hour=hour+temp;
 			else {
-				int b=endHour-temp-hour;
-				hour=startHour+((-1)*b)-1;
+				int b=temp-(endHour-hour);
+				hour=startHour+b-1;
 			}
 		}
         return *this;
@@ -51,7 +51,7 @@ public:
 		else{
 			if(hour-temp>=startHour) hour=hour-temp;
 			else {
-				int b=temp+hour-startHour;
+				int b=temp-(hour-startHour);
 				hour=endHour-b+1;
 			}
 		}
@@ -78,6 +78,7 @@ public:
 	friend const CircularInt& operator - (int a, const CircularInt&h);
 	friend ostream& operator<< (ostream& os, const CircularInt& h);
 	friend const CircularInt operator+ (const CircularInt& h1, const CircularInt& h2);
+	friend const CircularInt operator- (const CircularInt& h1, const CircularInt& h2);
 
 
 
@@ -97,6 +98,11 @@ public:
 	inline const CircularInt operator+(const CircularInt& h1, const CircularInt& h2) {
 		CircularInt copy=h1;
     	return copy.operator+=(h2.hour);
+	}
+	
+	inline const CircularInt operator-(const CircularInt& h1, const CircularInt& h2) {
+		CircularInt copy=h1;
+    	return copy.operator-=(h2.hour);
 	}
 
 	inline ostream& operator<< (ostream& os, const CircularInt& h) {
