@@ -8,4 +8,3 @@ CircularInt::CircularInt (int start,int end){
 	this->hour=start;
 }
 
-}
