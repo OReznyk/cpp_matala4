@@ -8,14 +8,10 @@ class CircularInt{
 	int startHour;
 	int hour;
 	int endHour;
-	
+
 public:
-	CircularInt (int,int){};
-	CircularInt (int hour=0){startHour=x;endHour=y;};
-	
-	CircularInt& operator{}(int startHour, int endHour){
-		return CircularInt(startHour, endHour);
-	}
+	CircularInt (int,int);
+//	CircularInt (int hour=0){startHour=x;endHour=y;};
 	CircularInt& operator+=(const int a){
 		int temp=a%(endHour-startHour+1);
 		if(temp==0)return *this;
@@ -29,19 +25,26 @@ public:
 		}
         return *this;
     }
-    
+
     // prefix increment:
     CircularInt& operator++() {
         if(hour+1<=endHour)hour++;
         else hour=startHour;
         return *this;
     }
-    
+
     // postfix increment:
     const CircularInt operator++(int flag_for_postfix_increment) {
         return this->operator++();
     }
-    
+
+    friend const CircularInt& operator - (int a, const CircularInt& h)
+	{
+//	    a -= h;
+//      - operator logic here
+        return h;
+	}
+
     CircularInt& operator-=(const int a){
     	int temp=a%(endHour-startHour+1);
 		if(temp==0)return *this;
@@ -54,17 +57,17 @@ public:
 		}
         return *this;
     }
-    
+
 	const CircularInt operator-() const {
     	CircularInt copy = *this;
     	copy.hour=endHour;
         return copy.operator-=(this->hour);
     }
-    
+
     CircularInt& operator*=(const int a) {
     	return this->operator+=((a-1)*this->hour);
     }
-    
+
     const CircularInt operator/(const int a) {
         CircularInt copy = *this;
         if(copy.hour%a==0){
@@ -76,18 +79,21 @@ public:
      		return *this;
 		   }
     }
-    
-	
-	friend ostream& operator<< (ostream& os, const CircularInt& h);	
-	friend const CircularInt operator+ (const CircularInt& h1, const CircularInt& h2);
-	
 
-	
+
+	friend ostream& operator<< (ostream& os, const CircularInt& h);
+	friend const CircularInt operator+ (const CircularInt& h1, const CircularInt& h2);
+
+
+
 };
 
 	//----------------------------------------
 	// friend global binary operators
 	//----------------------------------------
+
+
+
 	inline const CircularInt operator+(const CircularInt& h1, const CircularInt& h2) {
 		CircularInt copy=h1;
 		copy.hour+=h2.hour;
