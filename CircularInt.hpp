@@ -11,7 +11,8 @@ class CircularInt{
 
 public:
 	CircularInt (int,int);
-//	CircularInt (int hour=0){startHour=x;endHour=y;};
+	
+	
 	CircularInt& operator+=(const int a){
 		int temp=a%(endHour-startHour+1);
 		if(temp==0)return *this;
@@ -38,12 +39,11 @@ public:
         return this->operator++();
     }
 
-    friend const CircularInt& operator - (int a, const CircularInt& h)
-	{
-//	    a -= h;
-//      - operator logic here
-        return h;
-	}
+	const CircularInt& operator-() {
+    	CircularInt copy =*this;
+    	copy.hour=endHour;
+        return copy.operator-=(hour);
+    }
 
     CircularInt& operator-=(const int a){
     	int temp=a%(endHour-startHour+1);
@@ -52,17 +52,12 @@ public:
 			if(hour-temp>=startHour) hour=hour-temp;
 			else {
 				int b=temp+hour-startHour;
-				hour=endHour+b+1;
+				hour=endHour-b+1;
 			}
 		}
         return *this;
     }
 
-	const CircularInt operator-() const {
-    	CircularInt copy = *this;
-    	copy.hour=endHour;
-        return copy.operator-=(this->hour);
-    }
 
     CircularInt& operator*=(const int a) {
     	return this->operator+=((a-1)*this->hour);
@@ -80,7 +75,7 @@ public:
 		   }
     }
 
-
+	friend const CircularInt& operator - (int a, const CircularInt&h);
 	friend ostream& operator<< (ostream& os, const CircularInt& h);
 	friend const CircularInt operator+ (const CircularInt& h1, const CircularInt& h2);
 
@@ -92,12 +87,16 @@ public:
 	// friend global binary operators
 	//----------------------------------------
 
+	inline const CircularInt& operator-(int a, const CircularInt& h) {
+    	CircularInt copy = h;
+		copy.hour=a;
+    	return copy.operator-=(h.hour);
+    }
 
 
 	inline const CircularInt operator+(const CircularInt& h1, const CircularInt& h2) {
 		CircularInt copy=h1;
-		copy.hour+=h2.hour;
-    return copy;
+    	return copy.operator+=(h2.hour);
 	}
 
 	inline ostream& operator<< (ostream& os, const CircularInt& h) {

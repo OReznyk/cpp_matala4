@@ -11,7 +11,7 @@ int main() {
 	(hour += 2)++;  cout << hour << endl;     // 8
 	hour += 18;   cout << hour << endl;       // 2   (18 hours after 8)
 	cout << -hour << endl;                    // 10  (2 hours before midnight)
-//	hour = 1 - hour; cout << hour << endl;    // 11  (2 hours before 1)
+	hour = 1 - hour; cout << hour << endl;    // 11  (2 hours before 1)
 	cout << hour+hour << endl;                // 10 (11 hours after 11)
 	hour *= 2;   cout << hour << endl;        // 10 (11*2 = 11+11)
 //	hour += 40; cout <<"hour "<< hour << endl;
@@ -28,13 +28,4 @@ int main() {
 	//  * when are there two or more answers to a/b?
 	//	* when is there no answer to a/b?
 	
-	
-	
-/*	CircularInt hour (5, 10);                 // <hour is an integer between 1 and 12, like an hour on the clock>
-	cout << hour << endl;                     // 5
-	hour += 5;  cout << hour << endl;     	  // 10
-	hour += -6;  cout << hour << endl;         // 10
-	hour += -8;  cout << hour << endl;         // 8
-	hour += 4;  cout << hour << endl;         // 6
-//	(hour += 2)++;  cout << hour << endl;*/
 }
