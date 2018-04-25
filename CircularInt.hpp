@@ -11,8 +11,12 @@ class CircularInt{
 
 public:
 	CircularInt (int,int);
-	
-	
+
+	CircularInt& operator+(const int a){
+		CircularInt copy=*this;
+		return copy.operator+=(a);
+	}
+
 	CircularInt& operator+=(const int a){
 		int temp=a%(endHour-startHour+1);
 		if(temp==0)return *this;
@@ -45,6 +49,10 @@ public:
         return copy.operator-=(hour);
     }
 
+    const CircularInt& operator-(int a) {
+    	CircularInt copy =*this;
+        return copy.operator-=(a);
+    }
     CircularInt& operator-=(const int a){
     	int temp=a%(endHour-startHour+1);
 		if(temp==0)return *this;
@@ -75,12 +83,21 @@ public:
 		   }
     }
 
+    bool operator==(int a){
+        return (this->hour==a);
+    }
+
+    bool operator!=(int a){
+        return !(this->hour==a);
+    }
 	friend const CircularInt& operator - (int a, const CircularInt&h);
 	friend ostream& operator<< (ostream& os, const CircularInt& h);
 	friend const CircularInt operator+ (const CircularInt& h1, const CircularInt& h2);
 	friend const CircularInt operator- (const CircularInt& h1, const CircularInt& h2);
-
-
+	friend bool operator==(const CircularInt& h1, const CircularInt& h2);
+    friend bool operator==(int a,  const CircularInt&h);
+	friend bool operator!=(const CircularInt& h1, const CircularInt& h2);
+    friend bool operator!=(int a,  const CircularInt&h);
 
 };
 
@@ -94,12 +111,20 @@ public:
     	return copy.operator-=(h.hour);
     }
 
+    inline bool operator==(int a,  const CircularInt&h){
+    CircularInt copy = h;
+    return copy.operator==(a);
+    }
 
+    inline bool operator!=(int a,  const CircularInt&h){
+    CircularInt copy = h;
+    return !(copy.operator==(a));
+    }
 	inline const CircularInt operator+(const CircularInt& h1, const CircularInt& h2) {
 		CircularInt copy=h1;
     	return copy.operator+=(h2.hour);
 	}
-	
+
 	inline const CircularInt operator-(const CircularInt& h1, const CircularInt& h2) {
 		CircularInt copy=h1;
     	return copy.operator-=(h2.hour);
@@ -109,3 +134,12 @@ public:
     os << h.hour ;
     return os;
 	}
+
+
+	inline bool operator==(const CircularInt& h1, const CircularInt& h2) {
+    return (h1.hour==h2.hour);
+}
+
+	inline bool operator!=(const CircularInt& h1, const CircularInt& h2) {
+    return !(h1.hour==h2.hour);
+}

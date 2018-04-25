@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1524352670 source:c:\users\olga\documents\github\cpp_matala4\circularint.cpp
+	<iostream>
+	"CircularInt.hpp"
+
+1524691510 c:\users\olga\documents\github\cpp_matala4\circularint.hpp
+	<iostream>
+
+1524691386 source:c:\users\olga\documents\github\cpp_matala4\main.cpp
+	<iostream>
+	"CircularInt.hpp"
+

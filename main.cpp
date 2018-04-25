@@ -5,7 +5,7 @@ using namespace std;
 
 
 int main() {
-	CircularInt hour {1, 12};    //{1,12};              // <hour is an integer between 1 and 12, like an hour on the clock>
+	CircularInt hour (1, 12);    //{1,12};              // <hour is an integer between 1 and 12, like an hour on the clock>
 	cout << hour << endl;                     // 1
 	hour += 4;  cout << hour << endl;         // 5
 	(hour += 2)++;  cout << hour << endl;     // 8
@@ -23,9 +23,41 @@ int main() {
 		cout << message << endl;     // "There is no number x in {1,12} such that x*3=10"
 	}
 
-	// RIDDLES (not for submission): 
+	// RIDDLES (not for submission):
 	//  * when is there exactly one answer to a/b?
 	//  * when are there two or more answers to a/b?
 	//	* when is there no answer to a/b?
-	
+
+	cout<<"*********** new tests ***********"<<endl;
+	cout<<"***********    BOOL   ***********"<<endl;
+    CircularInt hour1 (1, 10);
+    CircularInt hour2 (1, 10);
+    bool test1 = (hour1 == hour2);
+    cout<<test1<<endl;                  //1
+    CircularInt hour3 (2, 10);
+    test1 = (hour3 == hour2);
+    cout<<test1<<endl;                  //0
+    test1 = (hour1 == 1);               //1
+    cout<<test1<<endl;
+    test1 = (1==hour1);               //1
+    cout<<test1<<endl;
+    test1 = (2==hour1);               //0
+    cout<<test1<<endl;
+    test1 = (1!=hour1);               //0
+    cout<<test1<<endl;
+    test1 = (2!=hour1);               //1
+    cout<<test1<<endl;
+    test1 = (hour3 != hour2);           //1
+    cout<<test1<<endl;
+    test1 = (hour1 != hour2);           //0
+    cout<<test1<<endl;
+    cout<<"***********    MAIN2   ***********"<<endl;
+    CircularInt hour4 (1, 12);
+    hour4 = hour4 - 3;
+    cout<<hour4<<endl;                  //10
+    CircularInt hour5 (1, 12);
+    hour5 = 2 - hour4 ;
+    cout<<hour5<<endl;                  //4
+    hour4 = hour4 - hour5 ;
+    cout<<hour4<<endl;                  //6
 }
