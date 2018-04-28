@@ -60,4 +60,46 @@ int main() {
     cout<<hour5<<endl;                  //4
     hour4 = hour4 - hour5 ;
     cout<<hour4<<endl;                  //6
+
+    cout<<"***********    *   ***********"<<endl;
+    CircularInt hour6 (1, 12);
+    hour6 = hour6 * 2;
+    cout<<hour6<<endl;                  //2
+    hour6 = hour6 * 3;
+    cout<<hour6<<endl;                  //6
+    hour6 = hour6 * 3;
+    cout<<hour6<<endl;                  //6
+    hour6 = hour6 * 2;
+    cout<<hour6<<endl;                  //12
+
+    hour6=1;
+    cout<<hour6<<endl;                  //1
+    hour6 *= 2;
+    cout<<hour6<<endl;                  //2
+    hour6 *= 3;
+    cout<<hour6<<endl;                  //6
+    hour6 *= 3;
+    cout<<hour6<<endl;                  //6
+    hour6 *=2;
+    cout<<hour6<<endl;                  //12
+
+    hour5=1;
+    hour6=1;
+    cout<<hour5<<" "<<hour6<<endl;                  //1 1
+    hour6 *= hour5;
+    cout<<hour6<<endl;                  //1
+    hour5 *= 3; hour6 *= 2;
+    hour6 *= hour5;
+    cout<<hour6<<endl;                  //6
+    hour6 *= hour5;
+    cout<<hour6<<endl;                  //6
+    hour6 *=2;
+    cout<<hour6<<endl;                  //12
+
+
+    cout<<"***********    =   ***********"<<endl;
+    hour6 =2;
+    cout<<hour6<<endl;                  //2
+    hour6 =20;
+    cout<<hour6<<endl;                  //7
 }
