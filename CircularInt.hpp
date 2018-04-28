@@ -12,6 +12,13 @@ class CircularInt{
 public:
 	CircularInt (int,int);
 
+	CircularInt& operator=(const int a){
+	    if(a>=startHour && a<= endHour) hour=a;
+	    else{
+            hour=startHour+(a%(endHour-startHour+1));
+	    }
+		return *this;
+	}
 	CircularInt& operator+(const int a){
 		CircularInt copy=*this;
 		return copy.operator+=(a);
@@ -128,6 +135,8 @@ public:
 
 	friend const CircularInt operator* (CircularInt& h1, const CircularInt& h2);
 
+    friend const CircularInt operator=(const CircularInt& h1, const CircularInt& h2);
+
 	friend bool operator==(const CircularInt& h1, const CircularInt& h2);
     friend bool operator==(int a,  const CircularInt&h);
 	friend bool operator!=(const CircularInt& h1, const CircularInt& h2);
@@ -158,6 +167,8 @@ public:
 		CircularInt copy=h1;
     	return copy.operator-=(h2.hour);
 	}
+
+	inline const CircularInt operator=(const CircularInt& h1, const CircularInt& h2){return h1.operator=(h2.hour);}
 
     inline bool operator==(int a,  const CircularInt&h){
     CircularInt copy = h;
