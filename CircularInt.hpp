@@ -6,17 +6,15 @@ using namespace std;
 
 class CircularInt{
 	int startHour;
-	int hour;
 	int endHour;
 
 public:
+	int hour;
 	CircularInt (int,int);
 
 	CircularInt& operator=(const int a){
 	    if(a>=startHour && a<= endHour) hour=a;
-	    else{
-            hour=startHour+(a%(endHour-startHour+1));
-	    }
+	    else hour=startHour+(a%(endHour-startHour+1));
 		return *this;
 	}
 	CircularInt& operator+(const int a){
@@ -46,9 +44,7 @@ public:
     }
 
     // postfix increment:
-    const CircularInt operator++(int flag_for_postfix_increment) {
-        return this->operator++();
-    }
+    const CircularInt operator++(int flag_for_postfix_increment) {return this->operator++();}
     const CircularInt operator--(int flag_for_postfix_increment) {
         if(hour>startHour) hour--;
         else hour=endHour;
@@ -60,12 +56,10 @@ public:
     	copy.hour=endHour;
         return copy.operator-=(hour);
     }
-
     const CircularInt& operator-(int a) {
     	CircularInt copy =*this;
         return copy.operator-=(a);
     }
-
     CircularInt& operator-=(const int a){
     	int temp=a%(endHour-startHour+1);
 		if(temp==0)return *this;
@@ -138,14 +132,14 @@ public:
     friend istream& operator>> (istream& is, CircularInt& h);
 
 	friend const CircularInt operator+ (const CircularInt& h1, const CircularInt& h2);
-
+    friend const CircularInt operator+ (int a, const CircularInt& h2);
 	friend const CircularInt operator* (CircularInt& h1, const CircularInt& h2);
 
     friend const CircularInt operator/ (CircularInt& h1, const CircularInt& h2);
     friend int operator/ (int a, const CircularInt& h2);
 
- //   friend CircularInt operator=(const CircularInt& h1, const CircularInt& h2);
-
+    friend const CircularInt operator+= (CircularInt& h1, const CircularInt& h2);
+    friend const CircularInt operator-=(CircularInt& h1, const CircularInt& h2);
 	friend bool operator==(const CircularInt& h1, const CircularInt& h2);
     friend bool operator==(int a,  const CircularInt&h);
 	friend bool operator!=(const CircularInt& h1, const CircularInt& h2);
@@ -198,6 +192,9 @@ public:
 		CircularInt copy=h1;
     	return copy.operator+=(h2.hour);
 	}
+    inline const CircularInt operator+ (int a, const CircularInt& h2){
+        CircularInt copy=h2;
+        return copy.operator+(a);}
 
     inline const CircularInt operator*( CircularInt& h1, const CircularInt& h2) {
         int a=h2.hour;
@@ -226,7 +223,16 @@ public:
     h.operator=(a);
     return is;}
 
-
+    inline const CircularInt operator+= (CircularInt& h1, const CircularInt& h2){
+        CircularInt copy=h1;
+        copy.operator+=(h2.hour);
+        h1=copy;
+        return h1;}
+    inline const CircularInt operator-=(CircularInt& h1, const CircularInt& h2){
+        CircularInt copy=h1;
+        copy.operator-=(h2.hour);
+        h1=copy;
+        return h1;}
     inline bool operator<=(const CircularInt& h1, const CircularInt& h2){return (h1.hour<=h2.hour);}
     inline bool operator<=(int a,  const CircularInt&h){return (a<=h.hour);}
     inline bool operator<(const CircularInt& h1, const CircularInt& h2){return (h1.hour<h2.hour);}
