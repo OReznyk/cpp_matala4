@@ -49,6 +49,11 @@ public:
     const CircularInt operator++(int flag_for_postfix_increment) {
         return this->operator++();
     }
+    const CircularInt operator--(int flag_for_postfix_increment) {
+        if(hour>startHour) hour--;
+        else hour=endHour;
+        return *this;
+    }
 
 	const CircularInt& operator-() {
     	CircularInt copy =*this;
@@ -130,10 +135,14 @@ public:
     friend const CircularInt operator-(const CircularInt& h1, const CircularInt& h2);
 
 	friend ostream& operator<< (ostream& os, const CircularInt& h);
+    friend istream& operator>> (istream& is, CircularInt& h);
 
 	friend const CircularInt operator+ (const CircularInt& h1, const CircularInt& h2);
 
 	friend const CircularInt operator* (CircularInt& h1, const CircularInt& h2);
+
+    friend const CircularInt operator/ (CircularInt& h1, const CircularInt& h2);
+    friend int operator/ (int a, const CircularInt& h2);
 
  //   friend CircularInt operator=(const CircularInt& h1, const CircularInt& h2);
 
@@ -195,12 +204,27 @@ public:
     	return h1.operator*(a);
 	}
 
+    inline const CircularInt operator/ (CircularInt& h1, const CircularInt& h2){return h1.operator/(h2.hour);}
+    inline int operator/(int a, const CircularInt& h2){
+        if(a%h2.hour==0){
+       		return a/h2.hour;
+       	}
+       	else{
+     		throw string("Can't divide");
+     		return -1;
+		   }
+    }
+
 	inline ostream& operator<< (ostream& os, const CircularInt& h) {
     os << h.hour ;
     return os;
 	}
 
-
+    inline istream& operator>> (istream& is, CircularInt& h){
+    int a;
+    is >> a;
+    h.operator=(a);
+    return is;}
 
 
     inline bool operator<=(const CircularInt& h1, const CircularInt& h2){return (h1.hour<=h2.hour);}
