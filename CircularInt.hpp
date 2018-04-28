@@ -53,6 +53,7 @@ public:
     	CircularInt copy =*this;
         return copy.operator-=(a);
     }
+
     CircularInt& operator-=(const int a){
     	int temp=a%(endHour-startHour+1);
 		if(temp==0)return *this;
@@ -66,9 +67,23 @@ public:
         return *this;
     }
 
-
+    CircularInt& operator*(const int a) {
+        CircularInt copy=*this;
+    	return copy.operator+=((a-1)*copy.hour);
+    }
     CircularInt& operator*=(const int a) {
     	return this->operator+=((a-1)*this->hour);
+    }
+
+    const CircularInt operator/=(const int a) {
+        if(hour%a==0){
+        	int res=hour/a;
+       		return operator-=((a-1)*res);
+       	}
+       	else{
+     		throw string("Can't divide");
+     		return *this;
+		   }
     }
 
     const CircularInt operator/(const int a) {
@@ -86,18 +101,47 @@ public:
     bool operator==(int a){
         return (this->hour==a);
     }
-
     bool operator!=(int a){
         return !(this->hour==a);
     }
-	friend const CircularInt& operator - (int a, const CircularInt&h);
+
+    bool operator<(int a){
+        return (this->hour<a);
+    }
+    bool operator<=(int a){
+        return (this->hour<=a);
+    }
+
+    bool operator>(int a){
+        return (this->hour>a);
+    }
+    bool operator>=(int a){
+        return (this->hour>=a);
+    }
+
+	friend const CircularInt& operator-(int a, const CircularInt&h);
+    friend const CircularInt operator-(const CircularInt& h1, const CircularInt& h2);
+
 	friend ostream& operator<< (ostream& os, const CircularInt& h);
+
 	friend const CircularInt operator+ (const CircularInt& h1, const CircularInt& h2);
-	friend const CircularInt operator- (const CircularInt& h1, const CircularInt& h2);
+
+	friend const CircularInt operator* (CircularInt& h1, const CircularInt& h2);
+
 	friend bool operator==(const CircularInt& h1, const CircularInt& h2);
     friend bool operator==(int a,  const CircularInt&h);
 	friend bool operator!=(const CircularInt& h1, const CircularInt& h2);
     friend bool operator!=(int a,  const CircularInt&h);
+
+    friend bool operator<=(const CircularInt& h1, const CircularInt& h2);
+    friend bool operator<=(int a,  const CircularInt&h);
+    friend bool operator<(const CircularInt& h1, const CircularInt& h2);
+    friend bool operator<(int a,  const CircularInt&h);
+
+    friend bool operator>=(const CircularInt& h1, const CircularInt& h2);
+    friend bool operator>=(int a,  const CircularInt&h);
+    friend bool operator>(const CircularInt& h1, const CircularInt& h2);
+    friend bool operator>(int a,  const CircularInt&h);
 
 };
 
@@ -110,24 +154,34 @@ public:
 		copy.hour=a;
     	return copy.operator-=(h.hour);
     }
+	inline const CircularInt operator-(const CircularInt& h1, const CircularInt& h2) {
+		CircularInt copy=h1;
+    	return copy.operator-=(h2.hour);
+	}
 
     inline bool operator==(int a,  const CircularInt&h){
     CircularInt copy = h;
     return copy.operator==(a);
     }
-
     inline bool operator!=(int a,  const CircularInt&h){
     CircularInt copy = h;
     return !(copy.operator==(a));
     }
+    inline bool operator==(const CircularInt& h1, const CircularInt& h2) {
+    return (h1.hour==h2.hour);
+}
+	inline bool operator!=(const CircularInt& h1, const CircularInt& h2) {
+    return !(h1.hour==h2.hour);
+}
+
 	inline const CircularInt operator+(const CircularInt& h1, const CircularInt& h2) {
 		CircularInt copy=h1;
     	return copy.operator+=(h2.hour);
 	}
 
-	inline const CircularInt operator-(const CircularInt& h1, const CircularInt& h2) {
-		CircularInt copy=h1;
-    	return copy.operator-=(h2.hour);
+    inline const CircularInt operator*( CircularInt& h1, const CircularInt& h2) {
+        int a=h2.hour;
+    	return h1.operator*(a);
 	}
 
 	inline ostream& operator<< (ostream& os, const CircularInt& h) {
@@ -136,10 +190,14 @@ public:
 	}
 
 
-	inline bool operator==(const CircularInt& h1, const CircularInt& h2) {
-    return (h1.hour==h2.hour);
-}
 
-	inline bool operator!=(const CircularInt& h1, const CircularInt& h2) {
-    return !(h1.hour==h2.hour);
-}
+
+    inline bool operator<=(const CircularInt& h1, const CircularInt& h2){return (h1.hour<=h2.hour);}
+    inline bool operator<=(int a,  const CircularInt&h){return (a<=h.hour);}
+    inline bool operator<(const CircularInt& h1, const CircularInt& h2){return (h1.hour<h2.hour);}
+    inline bool operator<(int a,  const CircularInt&h){return (a<h.hour);}
+
+    inline bool operator>=(const CircularInt& h1, const CircularInt& h2){return (h1.hour>=h2.hour);}
+    inline bool operator>=(int a,  const CircularInt&h){return (a>=h.hour);}
+    inline bool operator>(const CircularInt& h1, const CircularInt& h2){return (h1.hour>h2.hour);}
+    inline bool operator>(int a,  const CircularInt&h){return (a>h.hour);}
