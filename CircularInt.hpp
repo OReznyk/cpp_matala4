@@ -135,7 +135,7 @@ public:
 
 	friend const CircularInt operator* (CircularInt& h1, const CircularInt& h2);
 
-    friend const CircularInt operator=(const CircularInt& h1, const CircularInt& h2);
+ //   friend CircularInt operator=(const CircularInt& h1, const CircularInt& h2);
 
 	friend bool operator==(const CircularInt& h1, const CircularInt& h2);
     friend bool operator==(int a,  const CircularInt&h);
@@ -168,7 +168,7 @@ public:
     	return copy.operator-=(h2.hour);
 	}
 
-	inline const CircularInt operator=(const CircularInt& h1, const CircularInt& h2){return h1.operator=(h2.hour);}
+//	inline const CircularInt operator=(const CircularInt& h1, const CircularInt& h2){return h1.operator=(h2.hour);}
 
     inline bool operator==(int a,  const CircularInt&h){
     CircularInt copy = h;
