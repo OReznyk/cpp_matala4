@@ -101,5 +101,11 @@ int main() {
     hour6 =2;
     cout<<hour6<<endl;                  //2
     hour6 =20;
-    cout<<hour6<<endl;                  //7
+    cout<<hour6<<endl;                  //9
+    hour6 =20;
+    cout<<hour6<<endl;                  //9
+    hour6 =23;
+    cout<<hour6<<endl;                  //12
+    hour6 =24;
+    cout<<hour6<<endl;                  //1
 }
