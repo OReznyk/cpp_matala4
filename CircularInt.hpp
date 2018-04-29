@@ -127,7 +127,7 @@ public:
         return (this->hour>=a);
     }
 
-	friend int operator-(int a, const CircularInt&h);
+	friend const CircularInt operator-(int a, const CircularInt&h);
     friend const CircularInt operator-(const CircularInt& h1, const CircularInt& h2);
 
 	friend ostream& operator<< (ostream& os, const CircularInt& h);
@@ -165,9 +165,10 @@ public:
 	// friend global binary operators
 	//----------------------------------------
 
-	inline int operator-(int a, const CircularInt& h) {
-    	int ans=a-h.hour;
-    	return ans;
+	inline const CircularInt operator-(int a, const CircularInt& h) {
+    	CircularInt copy =h;
+    	copy=a;
+        return copy.operator-=(h.hour);
     }
 	inline const CircularInt operator-(const CircularInt& h1, const CircularInt& h2) {
 		CircularInt copy=h1;
