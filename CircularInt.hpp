@@ -34,9 +34,6 @@ public:
 				int b=temp-(endHour-hour);
 				hour=startHour+b-1;
 			}
-			else{
-                return this->operator-=(a);
-			}
 		}
         return *this;
     }
@@ -73,8 +70,8 @@ public:
     	cout<<"temp: "<<temp<<" ";
     	cout<<"a: "<<a<<" ";
 		if(temp==0)return *this;
-        if(a>0){
-                if(hour-temp<startHour){
+        if(temp>0){
+                if((hour-temp)<startHour){
                     int b=temp-(hour-startHour)-1;
                     cout<<"b: "<<b<<" ";
                     hour=endHour-b;
@@ -82,7 +79,7 @@ public:
                 else hour=hour-temp;
         }
 		else{
-                int b=temp+(hour-startHour);
+                int b=temp+(hour-startHour)+1;
                     hour=endHour+b;
 			}
         return *this;
