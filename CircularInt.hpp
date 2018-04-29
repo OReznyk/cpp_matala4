@@ -14,6 +14,7 @@ public:
 
 	CircularInt& operator=(const int a){
 	    hour=startHour;
+	    cout<<"a:"<<a<< "end="<< endHour<< "start="<< startHour;
 	    if(a>=startHour && a<= endHour) hour=a;
 	    else if(a>0) this->operator+=(a);
 	    else this->operator+=(a);
@@ -235,6 +236,8 @@ public:
 
     inline istream& operator>> (istream& is, CircularInt& h){
     int a;
+
+    cout<<is<<"=is";
     try{
         is >> a;
         if(is.fail()) throw "input must be a number!";
