@@ -29,10 +29,13 @@ public:
 		if(temp==0)return *this;
 		if(temp<0)return this->operator-=(a);
 		else{
-			if(temp+hour<=endHour) hour=hour+temp;
-			else {
+			if(temp+hour<=endHour && temp+hour>=startHour) hour=hour+temp;
+			else if(temp+hour>endHour ){
 				int b=temp-(endHour-hour);
 				hour=startHour+b-1;
+			}
+			else{
+                return this->operator-=(a);
 			}
 		}
         return *this;
@@ -68,6 +71,7 @@ public:
     CircularInt& operator-=(const int a){
     	int temp=a%(endHour-startHour+1);
     	cout<<"temp: "<<temp<<" ";
+    	cout<<"a: "<<a<<" ";
 		if(temp==0)return *this;
         if(a>0){
                 if(hour-temp<startHour){
@@ -78,7 +82,7 @@ public:
                 else hour=hour-temp;
         }
 		else{
-                int b=(-1)*(temp)+(hour-startHour)+1;
+                int b=temp+(hour-startHour)+1;
                     hour=endHour+b;
 			}
         return *this;
@@ -86,7 +90,9 @@ public:
 
     CircularInt& operator*(const int a) {
         CircularInt copy=*this;
-    	return copy.operator+=((a-1)*copy.hour);
+        if(a>=0){return copy.operator+=((a-1)*copy.hour);}
+        else return copy.operator+=((a)*copy.hour);
+
     }
     CircularInt& operator*=(const int a) {
     	return this->operator+=((a-1)*this->hour);

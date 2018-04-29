@@ -55,7 +55,7 @@ int main() {
     cout<<test1<<endl;
     test1 = (hour1 != hour2);           //0
     cout<<test1<<endl;*/
-    cout<<"***********    MAIN2   ***********"<<endl;
+ /*   cout<<"***********    MAIN2   ***********"<<endl;
     CircularInt hour4 (1, 12);
     hour4 = hour4 - 3;
     cout<<hour4<<endl;                  //10
@@ -63,11 +63,11 @@ int main() {
     hour5 = 2 - hour4 ;
     cout<<hour5<<endl;                  //4
     hour4 = hour4 - hour5 ;
-    cout<<hour4<<endl;                  //6
+    cout<<hour4<<endl;                  //6*/
 
- /*   cout<<"***********    *   ***********"<<endl;
+    cout<<"***********    *   ***********"<<endl;
     CircularInt hour6 (1, 12);
-    hour6 = hour6 * 2;
+    hour6 = hour6 * (-2);
     cout<<hour6<<endl;                  //2
     hour6 = hour6 * 3;
     cout<<hour6<<endl;                  //6
@@ -87,7 +87,7 @@ int main() {
     hour6 *=2;
     cout<<hour6<<endl;                  //12
 
-    hour5=1;
+/*    hour5=1;
     hour6=1;
     cout<<hour5<<" "<<hour6<<endl;                  //1 1
     hour6 *= hour5;
@@ -104,7 +104,7 @@ int main() {
     hour6 = hour5*hour5;
     cout<<hour6<<endl;                  //12
 
-    cout<<"***********    =   ***********"<<endl;
+ /*   cout<<"***********    =   ***********"<<endl;
     hour6 =2;
     cout<<hour6<<endl;                  //2
     hour4=1;
