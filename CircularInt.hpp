@@ -82,7 +82,7 @@ public:
                 else hour=hour-temp;
         }
 		else{
-                int b=temp+(hour-startHour)+1;
+                int b=temp+(hour-startHour);
                     hour=endHour+b;
 			}
         return *this;

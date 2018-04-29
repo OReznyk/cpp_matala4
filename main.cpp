@@ -67,10 +67,10 @@ int main() {
 
     cout<<"***********    *   ***********"<<endl;
     CircularInt hour6 (1, 12);
+    hour6 = hour6 * 3;
+    cout<<hour6<<endl;                  //3
     hour6 = hour6 * (-2);
     cout<<hour6<<endl;                  //2
-    hour6 = hour6 * 3;
-    cout<<hour6<<endl;                  //6
     hour6 = hour6 * 3;
     cout<<hour6<<endl;                  //6
     hour6 = hour6 * 2;
