@@ -16,7 +16,7 @@ public:
 	    hour=startHour;
 	    if(a>=startHour && a<= endHour) hour=a-1;
 	    else if(a>0) this->operator+=(a-1);
-	    else this->operator-=(a);
+	    else this->operator+=(a);
 		return *this;
 	}
 	CircularInt& operator+(const int a){
@@ -75,7 +75,7 @@ public:
                     }
                 else hour=hour-temp;
         }
-		else{   int b=temp-(hour-startHour);
+		else{   int b=temp+(hour-startHour);
                     hour=endHour+b+1;
 			}
         return *this;
