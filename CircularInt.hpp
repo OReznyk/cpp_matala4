@@ -68,8 +68,6 @@ public:
     }
     CircularInt& operator-=(const int a){
     	int temp=a%(endHour-startHour+1);
-    	cout<<"temp: "<<temp<<" ";
-    	cout<<"a: "<<a<<" ";
 		if(temp==0)return *this;
         if(temp>0){
                 if((hour-temp)<startHour){
@@ -80,7 +78,7 @@ public:
                 else hour=hour-temp;
         }
 		else{
-                int b=temp+(hour-startHour)+1;
+                int b=temp+(hour-startHour);
                     hour=endHour+b;
 			}
         return *this;
@@ -240,7 +238,6 @@ public:
 
     try{
         is >> a;
-        cout<<a<<"=is";
         if(is.fail()) throw "input must be a number!";
         //if(a < 0) throw "input must be a positive number!";
         h.operator=(a);
