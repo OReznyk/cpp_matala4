@@ -13,8 +13,10 @@ public:
 	CircularInt (int,int);
 
 	CircularInt& operator=(const int a){
+	    hour=startHour;
 	    if(a>=startHour && a<= endHour) hour=a;
-	    else hour=startHour+(a%(endHour-startHour+1));
+	    else if(a>0) this->operator+=(a);
+	    else this->operator-=(a);
 		return *this;
 	}
 	CircularInt& operator+(const int a){
@@ -223,7 +225,8 @@ public:
     int a;
     is >> a;
     h.operator=(a);
-    return is;}
+    return is;
+    }
 
     inline const CircularInt operator+= (CircularInt& h1, const CircularInt& h2){
         CircularInt copy=h1;

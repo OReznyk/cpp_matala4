@@ -108,4 +108,8 @@ int main() {
     cout<<hour6<<endl;                  //12
     hour6 =24;
     cout<<hour6<<endl;                  //1
+
+    cout<<"***********    >>   ***********"<<endl;
+    cin>>hour6;
+    cout<<hour6<<endl;                  //
 }
