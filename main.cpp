@@ -9,6 +9,8 @@ int main() {
 	cout << hour << endl;                     // 1
 	hour=20;
 	cout << hour << endl;                     // 1
+	hour=-9;
+	cout << hour << endl;                     // 1
 	/*hour += 4;  cout << hour << endl;         // 5
 	(hour += 2)++;  cout << hour << endl;     // 8
 	hour += 18;   cout << hour << endl;       // 2   (18 hours after 8)
