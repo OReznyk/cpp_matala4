@@ -95,7 +95,10 @@ int main() {
     cout<<hour6<<endl;                  //6
     hour6 *=2;
     cout<<hour6<<endl;                  //12
-
+    hour5 *= 2;
+    cout<<hour5<<endl;
+    hour6 = hour5*hour5;
+    cout<<hour6<<endl;                  //12
 
     cout<<"***********    =   ***********"<<endl;
     hour6 =2;

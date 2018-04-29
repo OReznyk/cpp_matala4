@@ -226,7 +226,7 @@ public:
     try{
         is >> a;
         if(is.fail()) throw "input must be a number!";
-        if(a < 0) throw "input must be a positive number!";
+        //if(a < 0) throw "input must be a positive number!";
         h.operator=(a);
     }
     catch(const char* msg){
