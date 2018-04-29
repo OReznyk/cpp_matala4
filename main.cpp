@@ -5,7 +5,7 @@ using namespace std;
 
 
 int main() {
-	CircularInt hour (1, 12);    //{1,12};              // <hour is an integer between 1 and 12, like an hour on the clock>
+	/*CircularInt hour (1, 12);    //{1,12};              // <hour is an integer between 1 and 12, like an hour on the clock>
 	cout << hour << endl;                     // 1
 	hour=20;
 	cout << hour << endl;                     // 1
@@ -54,7 +54,7 @@ int main() {
     test1 = (hour3 != hour2);           //1
     cout<<test1<<endl;
     test1 = (hour1 != hour2);           //0
-    cout<<test1<<endl;
+    cout<<test1<<endl;*/
     cout<<"***********    MAIN2   ***********"<<endl;
     CircularInt hour4 (1, 12);
     hour4 = hour4 - 3;
@@ -65,7 +65,7 @@ int main() {
     hour4 = hour4 - hour5 ;
     cout<<hour4<<endl;                  //6
 
-    cout<<"***********    *   ***********"<<endl;
+ /*   cout<<"***********    *   ***********"<<endl;
     CircularInt hour6 (1, 12);
     hour6 = hour6 * 2;
     cout<<hour6<<endl;                  //2

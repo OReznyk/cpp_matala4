@@ -14,8 +14,8 @@ public:
 
 	CircularInt& operator=(const int a){
 	    hour=startHour;
-	    if(a>=startHour && a<= endHour) hour=a-1;
-	    else if(a>0) this->operator+=(a-1);
+	    if(a>=startHour && a<= endHour) hour=a;
+	    else if(a>0) this->operator+=(a);
 	    else this->operator+=(a);
 		return *this;
 	}
@@ -67,16 +67,19 @@ public:
     }
     CircularInt& operator-=(const int a){
     	int temp=a%(endHour-startHour+1);
+    	cout<<"temp: "<<temp<<" ";
 		if(temp==0)return *this;
-        if(temp>0){
+        if(a>0){
                 if(hour-temp<startHour){
-                    int b=temp-(hour-startHour);
-                    hour=endHour-b+1;
+                    int b=temp-(hour-startHour)-1;
+                    cout<<"b: "<<b<<" ";
+                    hour=endHour-b;
                     }
                 else hour=hour-temp;
         }
-		else{   int b=temp+(hour-startHour);
-                    hour=endHour+b+1;
+		else{
+                int b=(-1)*(temp)+(hour-startHour)+1;
+                    hour=endHour+b;
 			}
         return *this;
     }
