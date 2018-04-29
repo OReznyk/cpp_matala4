@@ -237,9 +237,10 @@ public:
     inline istream& operator>> (istream& is, CircularInt& h){
     int a;
 
-    cout<<is<<"=is";
+
     try{
         is >> a;
+        cout<<a<<"=is";
         if(is.fail()) throw "input must be a number!";
         //if(a < 0) throw "input must be a positive number!";
         h.operator=(a);
