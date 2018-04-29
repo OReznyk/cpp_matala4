@@ -100,15 +100,17 @@ int main() {
     cout<<"***********    =   ***********"<<endl;
     hour6 =2;
     cout<<hour6<<endl;                  //2
-    hour6 =20;
-    cout<<hour6<<endl;                  //9
+    hour4=1;
+    hour6 =14-hour4;
+    cout<<hour6<<endl;                  //2
     hour6 =20;
     cout<<hour6<<endl;                  //9
     hour6 =23;
     cout<<hour6<<endl;                  //12
     hour6 =24;
     cout<<hour6<<endl;                  //1
-
+    hour6 =hour4;
+    cout<<hour6<<endl;                  //1
     cout<<"***********    >>   ***********"<<endl;
     cin>>hour6;
     cout<<hour6<<endl;                  //
