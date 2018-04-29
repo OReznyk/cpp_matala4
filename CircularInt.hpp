@@ -222,9 +222,6 @@ public:
 
     inline istream& operator>> (istream& is, CircularInt& h){
     int a;
-<<<<<<< HEAD
-    if((is >> a)!=0) h.operator=(a);
-=======
     try{
         is >> a;
         if(is.fail()) throw "input must be a number!";
@@ -234,7 +231,6 @@ public:
     catch(const char* msg){
         cerr << msg << endl;
     }
->>>>>>> db9b348602566bb91a91e9942fc2b375ffa8df27
     return is;
     }
 
