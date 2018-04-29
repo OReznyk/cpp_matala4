@@ -48,9 +48,8 @@ public:
     // postfix increment:
     const CircularInt operator++(int flag_for_postfix_increment) {
         CircularInt copy = *this;
-        hour++;
+        this->operator++();
         return copy;}
-
     const CircularInt operator--(int flag_for_postfix_increment) {
         if(hour>startHour) hour--;
         else hour=endHour;
